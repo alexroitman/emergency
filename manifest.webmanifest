@@ -1,0 +1,15 @@
+{
+  "name": "Emergencias - JAVERIM & Hatzala",
+  "short_name": "Emergencias",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#dc2626",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
