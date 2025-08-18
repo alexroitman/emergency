@@ -255,40 +255,7 @@
         // Service Worker Registration (solo para HTTPS/localhost)
         if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
             window.addEventListener('load', function() {
-                const swCode = `
-                    const CACHE_NAME = 'emergency-pwa-v1';
-                    const urlsToCache = [
-                        '/',
-                        '/index.html'
-                    ];
-
-                    self.addEventListener('install', function(event) {
-                        event.waitUntil(
-                            caches.open(CACHE_NAME)
-                                .then(function(cache) {
-                                    return cache.addAll(urlsToCache);
-                                })
-                        );
-                    });
-
-                    self.addEventListener('fetch', function(event) {
-                        event.respondWith(
-                            caches.match(event.request)
-                                .then(function(response) {
-                                    if (response) {
-                                        return response;
-                                    }
-                                    return fetch(event.request);
-                                }
-                            )
-                        );
-                    });
-                `;
-
-                const blob = new Blob([swCode], { type: 'application/javascript' });
-                const swUrl = URL.createObjectURL(blob);
-                
-                navigator.serviceWorker.register(swUrl)
+                    navigator.serviceWorker.register('https://alexroitman.github.io/emergency/service_worker.js')
                     .then(function(registration) {
                         console.log('Service Worker registrado exitosamente:', registration.scope);
                     })
