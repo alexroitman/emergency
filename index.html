@@ -215,6 +215,14 @@
             align-items: center;
             justify-content: center;
         }
+        .dac-btn {
+            background: linear-gradient(135deg, #10b981, #047857); /* verde seguridad */
+        }
+        
+        .dac-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -233,6 +241,11 @@
             <a href="tel:50322626" class="emergency-btn hatzala-btn">
                 <span class="icon">🚑</span>
                 <span>HATZALA</span>
+            </a>
+
+            <a href="tel:+5491143783212" class="emergency-btn dac-btn">
+                <span class="icon">👮‍♂️</span>
+                <span>DAC</span>
             </a>
         </div>
 
@@ -256,7 +269,7 @@
         if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const swUrl = './service_worker.js?v=8'; // ↑ subí este número en cada deploy
+      const swUrl = './service_worker.js?v=9'; // ↑ subí este número en cada deploy
       const reg = await navigator.serviceWorker.register(swUrl);
 
       // Detecta nuevas versiones y aplícalas YA
