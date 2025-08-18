@@ -1,5 +1,5 @@
 {
-  "name": "Emergencias - JAVERIM & Hatzala",
+  "name": "Emergencias - JAVERIM &amp; Hatzala",
   "short_name": "Emergencias",
   "start_url": ".",
   "display": "standalone",
@@ -11,5 +11,6 @@
       "sizes": "512x512",
       "type": "image/svg+xml"
     }
-  ]
+  ],
+  "description": "Emergencias - JAVERIM &amp; Hatzala"
 }
