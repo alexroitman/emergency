@@ -253,17 +253,40 @@
 
     <script>
         // Service Worker Registration (solo para HTTPS/localhost)
-        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-            window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('https://alexroitman.github.io/emergency/service_worker.js')
-                    .then(function(registration) {
-                        console.log('Service Worker registrado exitosamente:', registration.scope);
-                    })
-                    .catch(function(error) {
-                        console.log('Service Worker no disponible en este entorno');
-                    });
-            });
-        }
+        if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const swUrl = './service_worker.js?v=7'; // ↑ subí este número en cada deploy
+      const reg = await navigator.serviceWorker.register(swUrl);
+
+      // Detecta nuevas versiones y aplícalas YA
+      if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+
+      reg.addEventListener('updatefound', () => {
+        const sw = reg.installing;
+        if (!sw) return;
+        sw.addEventListener('statechange', () => {
+          if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+            sw.postMessage({ type: 'SKIP_WAITING' });
+          }
+        });
+      });
+
+      // Cuando el SW nuevo toma control, recargamos para ver el HTML nuevo
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        window.location.reload();
+      });
+
+      // Chequeá updates al volver a foreground (iOS/Pages ayudan con esto)
+      const poke = () => reg.update().catch(() => {});
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') poke();
+      });
+    } catch (e) {
+      console.log('No se pudo registrar el SW', e);
+    }
+  });
+}
 
         // PWA Install Prompt
         let deferredPrompt;
