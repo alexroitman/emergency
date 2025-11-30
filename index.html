@@ -115,6 +115,14 @@
             box-shadow: 0 15px 35px rgba(239, 68, 68, 0.4);
         }
 
+        .shomrim-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706); /* ámbar / dorado */
+        }
+
+        .shomrim-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4);
+        }
         .emergency-btn:active {
             transform: translateY(-1px);
         }
@@ -233,14 +241,19 @@
         </div>
 
         <div class="emergency-buttons">
-            <a href="tel:50326851" class="emergency-btn javerim-btn">
+            <a href="tel:+541150326851" class="emergency-btn javerim-btn">
                 <span class="icon">📞</span>
                 <span>JAVERIM</span>
             </a>
 
-            <a href="tel:50322626" class="emergency-btn hatzala-btn">
+            <a href="tel:+541150322626" class="emergency-btn hatzala-btn">
                 <span class="icon">🚑</span>
                 <span>HATZALA</span>
+            </a>
+
+            <a href="tel:+5491124743953" class="emergency-btn shomrim-btn">
+                <span class="icon">🛡️</span>
+                <span>SHOMRIM</span>
             </a>
 
             <a href="tel:+5491143783212" class="emergency-btn dac-btn">
@@ -269,7 +282,7 @@
         if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const swUrl = './service_worker.js?v=9'; // ↑ subí este número en cada deploy
+      const swUrl = './service_worker.js?v=10'; // ↑ subí este número en cada deploy
       const reg = await navigator.serviceWorker.register(swUrl);
 
       // Detecta nuevas versiones y aplícalas YA
