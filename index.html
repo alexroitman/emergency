@@ -116,14 +116,13 @@
         }
 
         .shomrim-btn {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            background: linear-gradient(135deg, #f59e0b, #d97706); /* ámbar / dorado */
         }
 
         .shomrim-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4);
         }
-
         .emergency-btn:active {
             transform: translateY(-1px);
         }
@@ -283,7 +282,7 @@
         if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const swUrl = './service_worker.js?v=9'; // ↑ subí este número en cada deploy
+      const swUrl = './service_worker.js?v=10'; // ↑ subí este número en cada deploy
       const reg = await navigator.serviceWorker.register(swUrl);
 
       // Detecta nuevas versiones y aplícalas YA

@@ -2,7 +2,7 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
 // Cambiá esto en cada deploy
-const SW_VERSION = 'v9';
+const SW_VERSION = 'v10';
 const CACHE_NAME = `pwa-offline-${SW_VERSION}`;
 const OFFLINE_FALLBACK = 'index.html';
 
