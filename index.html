@@ -18,32 +18,41 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            min-height: 100vh;
+            height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: clamp(8px, 2vh, 20px);
             color: white;
         }
 
         .container {
             max-width: 400px;
             width: 100%;
+            max-height: 100%;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .header {
-            margin-bottom: 50px;
+            margin-bottom: clamp(14px, 4vh, 40px);
         }
 
         .title {
-            font-size: 2.5rem;
+            font-size: clamp(1.6rem, 5.5vh, 2.5rem);
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             background: linear-gradient(135deg, #ef4444, #dc2626);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -51,7 +60,7 @@
         }
 
         .subtitle {
-            font-size: 1.1rem;
+            font-size: clamp(0.85rem, 2vh, 1.1rem);
             color: #9ca3af;
             font-weight: 400;
         }
@@ -59,8 +68,8 @@
         .emergency-buttons {
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            margin-bottom: 40px;
+            gap: clamp(8px, 1.8vh, 22px);
+            margin-bottom: clamp(12px, 3vh, 30px);
         }
 
         .emergency-btn {
@@ -68,17 +77,17 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            padding: 20px 25px;
+            padding: clamp(10px, 2vh, 20px) 25px;
             border: none;
             border-radius: 16px;
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2.4vh, 1.3rem);
             font-weight: 700;
             text-decoration: none;
             color: white;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            min-height: 80px;
+            min-height: clamp(52px, 9vh, 80px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
@@ -128,28 +137,28 @@
         }
 
         .icon {
-            font-size: 1.8rem;
+            font-size: clamp(1.3rem, 2.8vh, 1.8rem);
         }
 
         .info {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 20px;
+            padding: clamp(10px, 2vh, 20px);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .info-title {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vh, 1.1rem);
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             color: #f3f4f6;
         }
 
         .info-text {
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 1.7vh, 0.9rem);
             color: #d1d5db;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .pulse {
@@ -165,19 +174,9 @@
             }
         }
 
-        @media (max-width: 480px) {
-            .title {
-                font-size: 2rem;
-            }
-            
-            .emergency-btn {
-                font-size: 1.1rem;
-                padding: 18px 20px;
-                min-height: 70px;
-            }
-            
-            .icon {
-                font-size: 1.5rem;
+        @media (max-height: 640px) {
+            .info {
+                display: none;
             }
         }
 
@@ -226,10 +225,41 @@
         .dac-btn {
             background: linear-gradient(135deg, #10b981, #047857); /* verde seguridad */
         }
-        
+
         .dac-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+        }
+
+        .gmaj-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: clamp(10px, 2vh, 18px);
+            padding: clamp(8px, 1.4vh, 10px) 18px;
+            font-size: clamp(0.78rem, 1.7vh, 0.85rem);
+            font-weight: 500;
+            color: #d1d5db;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .gmaj-link:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .gmaj-link:active {
+            transform: translateY(0);
+        }
+
+        .gmaj-link .icon {
+            font-size: clamp(0.9rem, 1.8vh, 1rem);
         }
     </style>
 </head>
@@ -262,6 +292,11 @@
             </a>
         </div>
 
+        <a href="https://wa.me/5491125541277" class="gmaj-link" target="_blank" rel="noopener">
+            <span class="icon">💬</span>
+            <span>Gmaj Center · emergencias económicas</span>
+        </a>
+
         <div class="info">
             <h3 class="info-title">ℹ️ Información Importante</h3>
             <p class="info-text">
@@ -282,7 +317,7 @@
         if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const swUrl = './service_worker.js?v=10'; // ↑ subí este número en cada deploy
+      const swUrl = './service_worker.js?v=11'; // ↑ subí este número en cada deploy
       const reg = await navigator.serviceWorker.register(swUrl);
 
       // Detecta nuevas versiones y aplícalas YA
@@ -394,11 +429,14 @@
             btn.addEventListener('touchstart', function() {
                 this.style.transform = 'translateY(-1px) scale(0.98)';
             });
-            
+
             btn.addEventListener('touchend', function() {
                 this.style.transform = '';
             });
         });
     </script>
+
+    <script data-goatcounter="https://alexroitman99.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
